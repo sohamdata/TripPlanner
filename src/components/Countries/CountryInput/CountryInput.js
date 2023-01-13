@@ -11,14 +11,17 @@ const CountryInput = (props) => {
 
   const submitForm = event => {
     event.preventDefault();
-    props.onAddCountry(country);
+    if (country.trim().length !== 0 && country.trim().toLowerCase() !== "france") {
+      props.onAddCountry(country);
+    }
+    setCountry('');
   };
 
   return (
     <form onSubmit={submitForm}>
       <div className="form-control">
         <label>which country next?</label>
-        <input type="text" onChange={countryInput} />
+        <input type="text" value={country} onChange={countryInput} />
       </div>
       <Button type="submit">Add country</Button>
     </form>
