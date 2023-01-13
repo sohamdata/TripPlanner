@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
-import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
+import CountriesList from './components/Countries/CountriesList/CountriesList'
+import CountryInput from './components/Countries/CountryInput/CountryInput';
 import './App.css';
 
 const App = () => {
@@ -9,44 +9,44 @@ const App = () => {
     { text: 'Hong Kong', id: 'c1' },
     { text: 'Finland', id: 'c2' },
   ]
-  const [courseGoals, setCourseGoals] = useState(DEFAULT);
+  const [countries, setCountries] = useState(DEFAULT);
 
-  const addGoalHandler = enteredText => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
-      return updatedGoals;
+  const addCountry = enteredText => {
+    setCountries(prevGoals => {
+      const updatedCountries = [...prevGoals];
+      updatedCountries.unshift({ text: enteredText, id: Math.random().toString() });
+      return updatedCountries;
     });
   };
 
-  const deleteItemHandler = goalId => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
-      return updatedGoals;
+  const deleteCountry = goalId => {
+    setCountries(prevState => {
+      const updatedCountries = prevState.filter(goal => goal.id !== goalId);
+      return updatedCountries;
     });
   };
 
   let content = (
-    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+    <p style={{ textAlign: 'center' }}>No countries found. Maybe add one?</p>
   );
 
-  if (courseGoals.length > 0) {
+  if (countries.length > 0) {
     content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
+      <CountriesList items={countries} onDeleteItem={deleteCountry} />
     );
   }
 
   return (
     <div>
       <section id="goal-form">
-        <CourseInput onAddGoal={addGoalHandler} />
+        <CountryInput onAddCountry={addCountry} />
       </section>
       <section id="goals">
         {content}
-        {/* {courseGoals.length > 0 && (
-          <CourseGoalList
-            items={courseGoals}
-            onDeleteItem={deleteItemHandler}
+        {/* {countries.length > 0 && (
+          <CountriesList
+            items={countries}
+            onDeleteItem={deleteCountry}
           />
         ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
         } */}

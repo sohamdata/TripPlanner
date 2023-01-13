@@ -2,7 +2,7 @@ import React from 'react';
 
 import './CountryItem.css';
 
-const CourseGoalItem = props => {
+const CountryItem = props => {
   // const [deleteText, setDeleteText] = useState('');
 
   const deleteHandler = () => {
@@ -17,4 +17,4 @@ const CourseGoalItem = props => {
   );
 };
 
-export default CourseGoalItem;
+export default CountryItem;

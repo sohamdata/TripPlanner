@@ -1,22 +1,22 @@
 import React from 'react';
 
-import CourseGoalItem from '../CourseGoalItem/CourseGoalItem';
+import CountryItem from '../CountryItem/CountryItem';
 import './CountriesList.css';
 
-const CourseGoalList = props => {
+const CountriesList = (props) => {
   return (
     <ul className="goal-list">
       {props.items.map(goal => (
-        <CourseGoalItem
+        <CountryItem
           key={goal.id}
           id={goal.id}
           onDelete={props.onDeleteItem}
         >
           {goal.text}
-        </CourseGoalItem>
+        </CountryItem>
       ))}
     </ul>
   );
 };
 
-export default CourseGoalList;
+export default CountriesList;
