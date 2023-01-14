@@ -6,8 +6,9 @@ import './App.css';
 
 const App = () => {
   const DEFAULT = [
-    { text: 'Hong Kong', id: 'c1' },
-    { text: 'Finland', id: 'c2' },
+    { text: 'Germany', id: 'c1' },
+    { text: 'Netherlands', id: 'c2' },
+    { text: 'India', id: 'c3' },
   ]
   const [countries, setCountries] = useState(DEFAULT);
 
