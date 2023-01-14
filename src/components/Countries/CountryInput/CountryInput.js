@@ -4,6 +4,7 @@ import './CountryInput.css';
 
 const CountryInput = (props) => {
   const [country, setCountry] = useState('');
+  const [isValid, setIsValid] = useState(true);
 
   const countryInput = event => {
     setCountry(event.target.value);
@@ -11,15 +12,19 @@ const CountryInput = (props) => {
 
   const submitForm = event => {
     event.preventDefault();
-    if (country.trim().length !== 0 && country.trim().toLowerCase() !== "france") {
-      props.onAddCountry(country);
+    if (country.trim().length === 0 || country.trim().toLowerCase() === "france") {
+      setIsValid(false)
+      setCountry('')
+      return
     }
+    setIsValid(true)
+    props.onAddCountry(country);
     setCountry('');
   };
 
   return (
     <form onSubmit={submitForm}>
-      <div className="form-control">
+      <div className={isValid ? "form-control" : "form-control invalid"}>
         <label>which country next?</label>
         <input type="text" value={country} onChange={countryInput} />
       </div>
