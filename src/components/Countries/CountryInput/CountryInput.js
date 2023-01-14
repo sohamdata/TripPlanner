@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Button from '../../UI/Button/Button';
-import './CountryInput.css';
+import styles from './CountryInput.module.css';
 
 const CountryInput = (props) => {
   const [country, setCountry] = useState('');
@@ -24,7 +24,9 @@ const CountryInput = (props) => {
 
   return (
     <form onSubmit={submitForm}>
-      <div className={isValid ? "form-control" : "form-control invalid"}>
+      {/* <div className={isValid ? "form-control" : "form-control invalid"}> */}
+      {/* <div className={styles["form-control"]}> */}
+      <div className={`${styles["form-control"]} ${!isValid && styles.invalid}`}>
         <label>which country next?</label>
         <input type="text" value={country} onChange={countryInput} />
       </div>
